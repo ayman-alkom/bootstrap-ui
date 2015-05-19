@@ -92,10 +92,3 @@ $fields = collection($fields)
     </ul>
     <p><?= $this->Paginator->counter() ?></p>
 </div>
-<?= $this->append('script'); ?>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-<?= $this->end(); ?>
