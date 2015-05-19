@@ -75,9 +75,9 @@ $fields = collection($fields)
             $pk = '$' . $singularVar . '->' . $primaryKey[0];
             %>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>],['class'=>'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>],['class'=>'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>),'class'=> 'btn btn-default glyphicon glyphicon-trash']) ?>
+                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'data-toggle' => 'tooltip', 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'data-toggle' => 'tooltip', 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['title' => __('Delete'), 'data-toggle' => 'tooltip', 'confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
             </td>
         </tr>
 
@@ -92,3 +92,10 @@ $fields = collection($fields)
     </ul>
     <p><?= $this->Paginator->counter() ?></p>
 </div>
+<?= $this->append('script'); ?>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+<?= $this->end(); ?>
