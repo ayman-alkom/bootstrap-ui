@@ -6,23 +6,21 @@ use Cake\Utility\Inflector;
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_sidebar');
 ?>
-<ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('New <%= $singularHumanName %>'), ['action' => 'add']); ?></li>
-    <%
-    $done = [];
-    foreach ($associations as $type => $data):
-        foreach ($data as $alias => $details):
-            if ($details['controller'] != $this->name && !in_array($details['controller'], $done)):
-                %>
-    <li><?= $this->Html->link(__('List <%= Inflector::humanize($details["controller"]) %>'), ['controller' => '<%= $details["controller"] %>', 'action' => 'index']); ?></li>
-                <li><?= $this->Html->link(__('New <%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>'), ['controller' => ' <%= $details["controller"] %>', 'action' => 'add']); ?></li>
-                <%
-                $done[] = $details['controller'];
-            endif;
-        endforeach;
+<li><?= $this->Html->link(__('New <%= $singularHumanName %>'), ['action' => 'add']); ?></li>
+<%
+$done = [];
+foreach ($associations as $type => $data):
+    foreach ($data as $alias => $details):
+        if ($details['controller'] != $this->name && !in_array($details['controller'], $done)):
+            %>
+<li><?= $this->Html->link(__('List <%= Inflector::humanize($details["controller"]) %>'), ['controller' => '<%= $details["controller"] %>', 'action' => 'index']); ?></li>
+            <li><?= $this->Html->link(__('New <%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>'), ['controller' => ' <%= $details["controller"] %>', 'action' => 'add']); ?></li>
+            <%
+            $done[] = $details['controller'];
+        endif;
     endforeach;
-    %>
-</ul>
+endforeach;
+%>
 <?php $this->end(); ?>
 <%
 $fields = collection($fields)
