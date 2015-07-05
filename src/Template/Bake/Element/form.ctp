@@ -13,13 +13,13 @@ $this->start('tb_sidebar');
 ?>
 <% if (strpos($action, 'add') === false): %>
 <li><?=
-        $this->Form->postLink(
-        __('Delete'),
-        ['action' => 'delete', $<%= $singularVar
-        %>-><%= $primaryKey[0] %>],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $<%= $singularVar %>-><%= $primaryKey[0] %>)]
-        )
-        ?></li>
+    $this->Form->postLink(
+    __('Delete'),
+    ['action' => 'delete', $<%= $singularVar
+    %>-><%= $primaryKey[0] %>],
+    ['confirm' => __('Are you sure you want to delete # {0}?', $<%= $singularVar %>-><%= $primaryKey[0] %>)]
+    )
+    ?></li>
 <% endif; %>
 <li><?= $this->Html->link(__('List <%= $pluralHumanName %>'), ['action' => 'index']) ?></li>
 <%
