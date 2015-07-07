@@ -9,7 +9,7 @@ $fields = collection($fields)
 %>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->start('tb_sidebar');
+$this->start('tb_actions');
 ?>
 <% if (strpos($action, 'add') === false): %>
 <li><?=
@@ -37,6 +37,7 @@ foreach ($associations as $type => $data) {
 }
 %>
 <?php $this->end(); ?>
+<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 <?= $this->Form->create($<%= $singularVar %>); ?>
 <fieldset>
     <legend><?= __('<%= Inflector::humanize($action) %> {0}', ['<%= $singularHumanName %>']) ?></legend>

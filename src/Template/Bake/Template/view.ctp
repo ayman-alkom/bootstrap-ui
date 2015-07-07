@@ -41,7 +41,7 @@ $pk = "\$$singularVar->{$primaryKey[0]}";
 %>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->start('tb_sidebar');
+$this->start('tb_actions');
 ?>
 <li><?= $this->Html->link(__('Edit <%= $singularHumanName %>'), ['action' => 'edit', <%= $pk %>]) ?> </li>
 <li><?= $this->Form->postLink(__('Delete <%= $singularHumanName %>'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>)]) ?> </li>
@@ -62,6 +62,7 @@ foreach ($associations as $type => $data) {
 }
 %>
 <?php $this->end(); ?>
+<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h2><?= h($<%= $singularVar %>-><%= $displayField %>) ?></h2>
 <div class="row">

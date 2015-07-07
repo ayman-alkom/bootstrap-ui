@@ -4,7 +4,7 @@ use Cake\Utility\Inflector;
 %>
 <?php
 $this->extend('../Layout/TwitterBootstrap/dashboard');
-$this->start('tb_sidebar');
+$this->start('tb_actions');
 ?>
 <li><?= $this->Html->link(__('New <%= $singularHumanName %>'), ['action' => 'add']); ?></li>
 <%
@@ -22,6 +22,8 @@ foreach ($associations as $type => $data):
 endforeach;
 %>
 <?php $this->end(); ?>
+<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
+
 <%
 $fields = collection($fields)
         ->filter(function($field) use ($schema) {
