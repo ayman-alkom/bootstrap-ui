@@ -134,6 +134,12 @@ class FormHelper extends Helper
         return parent::create($model, $this->_formAlignment($options));
     }
 
+    public function submit($caption = null, array $options = [])
+    {
+        $options = array_merge($options,['class' => 'btn']);
+        return parent::submit($caption, $options);
+    }
+
     /**
      * Generates a form input element complete with label and wrapper div.
      *
