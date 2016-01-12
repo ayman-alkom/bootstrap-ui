@@ -36,17 +36,21 @@ You then need to load the plugin. In `boostrap.php`, something like:
 \Cake\Core\Plugin::load('BootstrapUI');
 ```
 
-For a complete setup, add the following to your `src\View\AppView`:
-
+For a complete setup, go to `src\View\AppView`:
+- replace `use Cake\View\View;` with `use BootstrapUI\View\UIView as View;`
+- add `parent::initialize();` to the `initialize` function.
 ```php
-public $layout = 'BootstrapUI.default';
+namespace App\View;
 
-public function initialize()
+use BootstrapUI\View\UIView as View;
+
+class AppView extends View
 {
-    $this->loadHelper('Html', ['className' => 'BootstrapUI.Html']);
-    $this->loadHelper('Form', ['className' => 'BootstrapUI.Form']);
-    $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
-    $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
+
+    public function initialize()
+    {
+        parent::initialize();
+    }
 }
 ```
 
